@@ -9,7 +9,7 @@ const StyledWallet = styled.div`
         &-grid {
             display: grid;
             position: relative;
-            margin-top: -30px;
+            margin-top: -40px;
             grid-auto-rows: 50px;
             grid-row-gap: 1px;
             grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -31,9 +31,12 @@ const StyledWallet = styled.div`
             div:nth-child(4n + 1) {
                 justify-self: start;
             }
+            div:nth-child(4n + 8) {
+                //font-size: ${({theme}) => theme.sizes.font.large};
+            }
 
             div:nth-child(4n + 6), div:nth-child(4n + 7) {
-                color: ${({theme}) => theme.colors.lightgrey1};
+                color: ${({theme}) => theme.colors.light3};
                 font-weight: 300;
             }
             

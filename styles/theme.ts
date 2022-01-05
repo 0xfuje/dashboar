@@ -1,4 +1,3 @@
-import { SERVFAIL } from 'dns'
 import { DefaultTheme } from 'styled-components'
 
 declare module 'styled-components' {
@@ -20,6 +19,7 @@ declare module 'styled-components' {
             font: {
                 xsmall: string,
                 small: string,
+                normal: string,
                 medium: string,
                 large: string,
                 xlarge: string
@@ -67,6 +67,7 @@ const theme: DefaultTheme = {
         font: {
             xsmall: '8px',
             small: '10px',
+            normal: '12px',
             medium: '14px',
             large: '18px',
             xlarge: '24px'

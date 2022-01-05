@@ -13,7 +13,6 @@ const StyledDashHeader = styled.div`
             background-color: ${({theme}) => theme.colors.dark1};
             border-radius: ${({theme}) => theme.sizes.borrad.small};
             padding: 0 2rem;
-            height: 40px;
             &-image {
                 display: block;
                 height: 24px;

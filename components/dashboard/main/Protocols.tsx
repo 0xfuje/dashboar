@@ -18,7 +18,7 @@ const StyledProtocols = styled.div`
 
 function Protocols() {
     const { protocols, loading } = useContext(DashboardContext);
-    const renderProtocols = loading.protocols ? '' : 
+    const renderProtocols = loading ? '' : 
     protocols.map((p: any) => {
         const id = nanoid();
         return (

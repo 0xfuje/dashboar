@@ -1,17 +1,18 @@
 import type { NextPage } from 'next';
 import Dashboard from '../components/Dashboard';
 import Header from '../components/Header';
-import { DashboardProvider } from '../context/dashboard.context';
+
+import { DashboardContext } from '../context/dashboard.context';
+import { useContext } from 'react';
 
 
 const Home: NextPage = () => {
+  const {isAPIRequested} = useContext(DashboardContext);
+  console.log(isAPIRequested);
   return (
     <>
       <Header/>
-      <DashboardProvider>
-        <Dashboard variant='main'/>
-      </DashboardProvider>
-      
+      {(!isAPIRequested) ? '' : <Dashboard variant='main'/>}
     </>
   )
 }

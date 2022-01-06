@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import Image from "next/image";
+import { useContext, useState } from 'react';
+import { DashboardContext } from '../context/dashboard.context';
 
 const StyledSearchBar = styled.div`
     background-color: ${props => props.theme.colors.dark2};
@@ -12,7 +14,7 @@ const StyledSearchBar = styled.div`
             font-family: ${props => props.theme.fontFamily};
             width: ${props => props.theme.sizes.width.searchbar};
             background-color: ${props => props.theme.colors.dark1};
-            color: ${props => props.theme.colors.lightgrey1};
+            color: ${props => props.theme.colors.light1};
             padding: 0.5rem 1rem;
             height: 40px;
             border-radius: 3px 0 0 3px;
@@ -37,11 +39,19 @@ const StyledSearchBar = styled.div`
     }
 `;
 
+
+
 function SearchBar() {
+    const { setAddressID, setIsAPIRequested } = useContext(DashboardContext);
+    const [address, setAddress] = useState('');
+    const setAddressHandler = () => {
+        setAddressID(address);
+        setIsAPIRequested(true);
+    }
     return (
         <StyledSearchBar className="SearchBar">
-            <input className="SearchBar-input" type="text" placeholder="Enter an address to get started..." />
-            <button className='SearchBar-button'><Image src='/icons/arrow-right.svg' height='20px' width='20px' alt='Search for address'/></button>
+            <input className="SearchBar-input" type="text" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Enter an address to get started..." />
+            <button className='SearchBar-button' onClick={setAddressHandler}><Image src='/icons/arrow-right.svg' height='20px' width='20px' alt='Search for address'/></button>
         </StyledSearchBar>
     )
 }

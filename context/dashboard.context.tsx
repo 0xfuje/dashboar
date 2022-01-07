@@ -1,7 +1,6 @@
 import { AxiosResponse } from "axios";
 import React, { createContext, useEffect, useState } from "react";
 const axios = require('axios').default;
-import Router from 'next/router';
 
 
 

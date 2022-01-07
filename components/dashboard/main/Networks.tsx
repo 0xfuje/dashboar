@@ -18,6 +18,7 @@ const StyledNetworks = styled.div`
 
 function Networks() {
     const { balances, loading } = useContext(DashboardContext);
+    console.log(balances);
     const renderCards =  loading ? '' : 
         balances.map((n: any) => 
             <Card 

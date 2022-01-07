@@ -76,7 +76,7 @@ const theme: DefaultTheme = {
             dash1: '780px',
             dash2: '500px',
             searchbar: '500px',
-            full_width: '1330px',
+            full_width: '780px',
         },
         icon: {
             small: '10px',

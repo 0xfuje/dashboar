@@ -9,8 +9,9 @@ import GasStation from "./dashboard/GasStation";
 
 const StyledDashboard = styled.div`
     margin: 0 auto;
+    background-color: ${({theme}) => theme.colors.dark2};
     max-width: ${({theme}) => theme.sizes.width.dash1};
-    border: 0.5px solid ${({theme}) => theme.colors.grey2};
+    border: 1px solid ${({theme}) => theme.colors.grey2};
     border-radius: ${({theme}) => theme.sizes.borrad.medium};
     padding: ${({theme}) => theme.sizes.padding.dash};
 `

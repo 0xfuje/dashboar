@@ -16,7 +16,7 @@ const StyledWallet = styled.div`
             margin-top: -40px;
             grid-auto-rows: 50px;
             grid-row-gap: 1px;
-            grid-template-columns: 32px 2fr 1fr 1fr 1fr;
+            grid-template-columns: 32px 1fr 1fr 1fr 1fr;
             justify-items: end;
             align-items: center;
             background:

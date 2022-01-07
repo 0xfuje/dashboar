@@ -28,10 +28,13 @@ a {
 html {
     background-color: ${props => props.theme.colors.dark2};
     color: ${props => props.theme.colors.light1};
+    margin-bottom: 5rem;
 }
 body {
     max-width: ${props => props.theme.sizes.width.full_width};
     margin: 0 auto;
+    
+
 }
 `
 

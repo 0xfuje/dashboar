@@ -26,6 +26,7 @@ function Protocols() {
             name={p.name}
             value={`$${p.asset_usd_value.toFixed(1)}`}
             logo_url={p.logo_url}
+            site_url={p.site_url}
             key={id}
             id={id}
         />

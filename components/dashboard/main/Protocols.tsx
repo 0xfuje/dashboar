@@ -6,6 +6,9 @@ import { nanoid } from 'nanoid';
 
 const StyledProtocols = styled.div`
     .Protocols {
+        &-title {
+            margin-bottom: 10px;
+        }
         &-grid {
             display: grid;
             grid-gap: 10px;
@@ -20,16 +23,17 @@ function Protocols() {
     const { wallet, loading } = useContext(DashboardContext);
     const renderProtocols = loading ? '' : 
     wallet.protocols.map((p: any) => {
+        if (p.asset_usd_value < 1) return;
         const id = nanoid();
         return (
             <Card 
-            name={p.name}
-            value={`$${p.asset_usd_value.toFixed(1)}`}
-            logo_url={p.logo_url}
-            site_url={p.site_url}
-            key={id}
-            id={id}
-        />
+                name={p.name}
+                value={`$${p.asset_usd_value.toFixed(1)}`}
+                logo_url={p.logo_url}
+                site_url={p.site_url}
+                key={id}
+                id={id}
+            />
         )
     });
     

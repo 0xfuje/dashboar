@@ -18,7 +18,7 @@ const StyledCard = styled.button`
         &-name {
             font-weight: 300;
             font-size: ${({theme}) => theme.sizes.font.normal};
-            margin-top: -3px;
+            margin-top: -5px;
             color: ${({theme}) => theme.colors.lightgrey2};
             
         }
@@ -26,7 +26,7 @@ const StyledCard = styled.button`
         &-value {
             position: absolute;
             left: 0;
-            top: -1px;
+            top: -3px;
             font-size: ${({theme}) => theme.sizes.font.medium};
         }
         

@@ -10,15 +10,25 @@ const StyledSearchBar = styled.div`
     justify-content: space-between;
 
     .SearchBar {
+        
         &-input {
             font-family: ${props => props.theme.fontFamily};
             width: ${props => props.theme.sizes.width.searchbar};
+            font-weight: 300;
             background-color: ${props => props.theme.colors.dark1};
             color: ${props => props.theme.colors.light1};
             padding: 0.5rem 1rem;
             height: 40px;
             border-radius: 3px 0 0 3px;
             border: none;
+            outline-style: hidden;
+            &::focus {
+                outline: 1px solid ${props => props.theme.colors.lightgrey2};
+                
+            }
+            &::placeholder {
+                color: ${props => props.theme.colors.lightgrey1};
+            }
         }
         &-button {
             background-color: ${props => props.theme.colors.grey2};

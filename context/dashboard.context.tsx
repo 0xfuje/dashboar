@@ -43,6 +43,7 @@ export function DashboardProvider(props: any) {
             const B = b.amount * b.price;
             return B - A;
         });
+        console.log(sortAssets);
         const finalAssets = sortAssets.map((item: any) => {
             const value = item.amount * item.price;
             const price = getDecimals(item.price);
@@ -58,7 +59,6 @@ export function DashboardProvider(props: any) {
                 logo_url: item.logo_url
             }
         })
-
         walletDispatch({ type: 'LOAD-ASSETS', payload: {assets: finalAssets}});
     }
 
@@ -80,7 +80,6 @@ export function DashboardProvider(props: any) {
         chain.sort((a: any, b: any) => b.usd_value - a.usd_value));
 
         walletDispatch({ type: 'LOAD-CHAINS', payload: {chains: chains}});
-        console.log(wallet);
     }
     
     const getProtocols = async(): Promise<void> => {

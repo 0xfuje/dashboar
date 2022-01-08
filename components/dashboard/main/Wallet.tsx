@@ -83,7 +83,6 @@ function Wallet() {
     console.log(wallet.assets);
     
     
-    
     const renderWallet = loading ? '' : 
     wallet.assets.map((item: any) => {
         if (item.value < 1) return;

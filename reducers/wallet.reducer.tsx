@@ -1,5 +1,11 @@
 const walletReducer = (state: any, action: any) => {
     switch(action.type) {
+        case 'API-REQUEST':
+            return ({...state, isAPIRequested: true})
+        case 'LOADING-STARTED':
+            return ({...state, isLoading: true})
+        case 'LOADING-FINISHED':
+            return ({...state, isLoading: false})
         case 'LOAD-TOTAL':
             return ({...state, total: action.payload.total});
         case 'LOAD-ASSETS':

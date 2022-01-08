@@ -5,6 +5,8 @@ import { getDecimals } from "../helpers/helper";
 import axios from "axios";
 
 const defWallet = {
+    isAPIrequested: false,
+    isLoading: true,
     wallet: {
         total: false,
         assets: [{}],
@@ -21,21 +23,19 @@ export const DashboardContext = createContext<any | null>(null);
 export function DashboardProvider(props: any) {
     const [wallet, walletDispatch] = useReducer(walletReducer, defWallet);
     const [addressID, setAddressID] = useState('');
-    const [isAPIRequested, setIsAPIRequested] = useState(false);
-    const [loading, setLoading] = useState(true);
-    
+
     // Api calls
     const APIRequests = {
         base: 'https://openapi.debank.com/v1/',
-        balance: `user/total_balance?id=${addressID}`,
-        protocol: `user/simple_protocol_list?id=${addressID}`,
-        asset: `user/token_list?id=${addressID}&is_all=false`,
+        chain: `https://openapi.debank.com/v1/user/total_balance?id=${addressID}`,
+        protocol: `https://openapi.debank.com/v1/user/simple_protocol_list?id=${addressID}`,
+        asset: `https://openapi.debank.com/v1/user/token_list?id=${addressID}&is_all=false`,
     }
     
 
     const getAssets = async(): Promise<void> => {
-        setLoading(true);
-        const assetsAPI = axios.get(APIRequests.base + APIRequests.asset).then((res: AxiosResponse)  => res.data);
+        walletDispatch({ type: 'LOADING-STARTED' });
+        const assetsAPI = axios.get(APIRequests.asset).then((res: AxiosResponse)  => res.data);
         const assets = await assetsAPI
         .then((data: any) => (Object.values(data)));
         const sortAssets = assets.sort((a: any, b: any) => {
@@ -64,7 +64,7 @@ export function DashboardProvider(props: any) {
 
 
     const getChains = async (): Promise<void> => {
-        const chainsAPI = axios.get(APIRequests.base + APIRequests.balance).then((res: AxiosResponse)  => res.data);
+        const chainsAPI = axios.get(APIRequests.chain).then((res: AxiosResponse)  => res.data);
         const chains = await chainsAPI
         .then((data: any) => {
             walletDispatch({
@@ -84,26 +84,26 @@ export function DashboardProvider(props: any) {
     }
     
     const getProtocols = async(): Promise<void> => {
-        const protocolAPI = axios.get(APIRequests.base + APIRequests.protocol).then((res: AxiosResponse)  => res.data);
+        const protocolAPI = axios.get(APIRequests.protocol).then((res: AxiosResponse)  => res.data);
         const protocols = await protocolAPI
         .then((data: any) => data.sort((a: any, b:any) => b.asset_usd_value - a.asset_usd_value));
         walletDispatch({ type: 'LOAD-PROTOCOLS', payload: {protocols: protocols}});
-        setLoading(false);
+        walletDispatch({ type: 'LOADING-FINISHED' });
     }
 
     useEffect(() => {
         async function getData() {
-            if (!isAPIRequested) return;
+            if (!wallet.isAPIRequested) return;
             await getAssets();
             await getChains();
             await getProtocols();
         }
         getData();
-    }, [isAPIRequested, addressID]);
+    }, [addressID]);
 
 
     return (
-        <DashboardContext.Provider value={{wallet, addressID, setAddressID, isAPIRequested, setIsAPIRequested, loading}}>
+        <DashboardContext.Provider value={{wallet, walletDispatch, addressID, setAddressID}}>
             {props.children}
         </DashboardContext.Provider>
     )

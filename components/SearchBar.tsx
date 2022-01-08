@@ -42,11 +42,11 @@ const StyledSearchBar = styled.div`
 
 
 function SearchBar() {
-    const { setAddressID, setIsAPIRequested } = useContext(DashboardContext);
+    const { setAddressID, walletDispatch } = useContext(DashboardContext);
     const [address, setAddress] = useState('');
     const setAddressHandler = () => {
         setAddressID(address);
-        setIsAPIRequested(true);
+        walletDispatch({ type: 'API-REQUEST'})
     }
     return (
         <StyledSearchBar className="SearchBar">

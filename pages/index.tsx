@@ -9,12 +9,13 @@ import { useContext } from 'react';
 
 
 const Home: NextPage = () => {
-  const {isAPIRequested, loading} = useContext(DashboardContext);
-  console.log(isAPIRequested);
+  const {wallet} = useContext(DashboardContext);
   return (
     <>
       <Header/>
-      {(!isAPIRequested || loading) ? <Loader loading={isAPIRequested} /> : <Dashboard variant='main'/>}
+      {(!wallet.isAPIRequested || wallet.isLoading) 
+        ? <Loader loading={wallet.isAPIRequested} />
+        : <Dashboard variant='main'/>}
     </>
   )
 }

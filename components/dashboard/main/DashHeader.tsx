@@ -28,14 +28,15 @@ const StyledDashHeader = styled.div`
 `
 
 function DashHeader() {
-    const { totalUSD, addressID } = useContext(DashboardContext);
+    const { wallet, addressID } = useContext(DashboardContext);
     const shortAddressID = `${addressID.slice(0, 6)}...${addressID.slice(-4)}`;
+    const displayTotal = (wallet.total > 0) ? `$${wallet.total}` : '???' ;
     return (
         <StyledDashHeader className="DashHeader">
             <div className="DashHeader-address">
                 {shortAddressID}
             </div>
-            <div className="DashHeader-netWorth"><p><span>{totalUSD ? `$${totalUSD}` : '???'} </span> — Net Worth</p></div>
+            <div className="DashHeader-netWorth"><p><span>{displayTotal} </span> — Net Worth</p></div>
         </StyledDashHeader>
         
     )

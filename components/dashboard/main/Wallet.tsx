@@ -80,12 +80,12 @@ const StyledWallet = styled.div`
 
 function Wallet() {
     const { wallet, loading } = useContext(DashboardContext);
-    console.log(wallet);
+    console.log(wallet.assets);
     
     
     
     const renderWallet = loading ? '' : 
-    wallet.map((item: any) => {
+    wallet.assets.map((item: any) => {
         if (item.value < 1) return;
         return (
             <>

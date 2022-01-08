@@ -17,10 +17,9 @@ const StyledNetworks = styled.div`
 `
 
 function Networks() {
-    const { balances, loading } = useContext(DashboardContext);
-    console.log(balances);
+    const { wallet, loading } = useContext(DashboardContext);
     const renderCards =  loading ? '' : 
-        balances.map((n: any) => 
+        wallet.chains.map((n: any) => 
             <Card 
                 name={n.name}
                 value={`$${n.usd_value.toFixed(1)}`}
@@ -29,7 +28,6 @@ function Networks() {
                 id={n.community_id}
             />
     );
-    console.log(balances);
 
     
     return (

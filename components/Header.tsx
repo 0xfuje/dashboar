@@ -9,6 +9,18 @@ const StyledHeader = styled.header`
     max-width: ${props => props.theme.sizes.width.dash1};
     justify-content: space-between;
     background-color: ${props => props.theme.colors.dark2};
+    .Header {
+        &-logo {
+            position: relative;
+            display: flex;
+            height: 40px;
+            &-boar {
+                font-size: 32px;
+                left: 0;
+                top: 0;
+            }
+        }
+    }
 `
 
 
@@ -18,7 +30,12 @@ function Header() {
 
     return (
         <StyledHeader className='Header'>
-                <Image className='Header-logo' src='/logo/dashboar-logo-white.svg' width='100px' height='32px' alt='DashBoar Logo'/>
+                <div className="Header-logo">
+                    <Image className='Header-logo-text' src='/dash.svg' width='100px' height='40px' alt='DashBoar Logo'/>
+                    <div className="Header-logo-boar"> 🐗</div>
+                </div>
+                
+                
                 <SearchBar />
         </StyledHeader>
     )

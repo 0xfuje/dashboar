@@ -8,12 +8,11 @@ const StyledSearchBar = styled.div`
     color: ${props => props.theme.colors.dark1};
     display: flex;
     justify-content: space-between;
-
+    
     .SearchBar {
-        
         &-input {
             font-family: ${props => props.theme.fontFamily};
-            width: ${props => props.theme.sizes.width.searchbar};
+            width: ${props => props.theme.sizes.width.small_width};
             font-weight: 300;
             background-color: ${props => props.theme.colors.dark1};
             color: ${props => props.theme.colors.light1};
@@ -28,6 +27,10 @@ const StyledSearchBar = styled.div`
             }
             &::placeholder {
                 color: ${props => props.theme.colors.lightgrey1};
+            }
+            @media (max-width: ${props => props.theme.breakpoints.medium}) {
+                
+                width: calc(40vw);
             }
         }
         &-button {

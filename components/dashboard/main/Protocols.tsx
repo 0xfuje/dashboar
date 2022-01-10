@@ -13,6 +13,9 @@ const StyledProtocols = styled.div`
             display: grid;
             grid-gap: 10px;
             grid-template-columns: 162.5px 162.5px 162.5px 162.5px;
+            @media (max-width: ${props => props.theme.breakpoints.medium}) {
+                grid-template-columns: 162.5px 162.5px;
+            }
             grid-auto-rows: 60px;
         }
     }

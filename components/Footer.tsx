@@ -1,16 +1,21 @@
 import styled from "styled-components";
-import { useContext } from "react";
-import { DashboardContext } from "../context/dashboard.context";
+/* import { useContext } from "react";
+import { DashboardContext } from "../context/dashboard.context"; */
 
-const StyledFooter = styled.footer<IProps>`
+const StyledFooter = styled.footer`
     margin-top: 3rem;
-    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    
     font-weight: 300;
     font-size: ${props => props.theme.sizes.font.normal};
     color: ${props => props.theme.colors.lightgrey2};
     text-align: center;
+    @media (max-width: ${props => props.theme.breakpoints.medium}) {
+        padding-left: ${({theme}) => theme.sizes.padding.normal};
+    }
     .Footer {
         &-para {
+            max-width: 60ch;
             text-align: left;
         }
         &-link {
@@ -24,18 +29,16 @@ const StyledFooter = styled.footer<IProps>`
     }
 `;
 
-interface IProps {
-    isLoading: boolean,
-}
+
 
 function Footer() {
-    const { wallet } = useContext(DashboardContext);
-    console.log(wallet.isLoading);
     const year = new Date().getFullYear();
     return (
-        <StyledFooter className="Footer" isLoading={wallet.isLoading}>
-            <p className="Footer-para">©{year} Designed and coded by <a className='Footer-link' href="https://github.com/web3wolf">web3wolf</a> with <br />DeBank OpenAPI, React, Next.js and Styled components
-            <br />I&#39;m looking for a work and freelancing in crypto!</p>
+        <StyledFooter className="Footer">
+            <p className="Footer-para">©{year} Designed and coded by <a className='Footer-link' href="https://github.com/web3wolf">web3wolf</a>.
+            Works best on desktop viewport.
+            Built with DeBank OpenAPI, React, Next.js and Styled components.
+            I&#39;m a front-end dev looking for work and freelancing in crypto!</p>
         </StyledFooter>
     )
 }

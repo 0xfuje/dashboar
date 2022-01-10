@@ -32,9 +32,8 @@ html {
 }
 body {
     max-width: ${props => props.theme.sizes.width.full_width};
+    background-color: ${props => props.theme.colors.dark2};
     margin: 0 auto;
-    
-
 }
 `
 

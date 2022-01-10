@@ -5,7 +5,7 @@ const StyledDash = styled.div`
     max-width: 100%;
     border: 0.5px solid ${({theme}) => theme.colors.grey2};
     border-radius: ${({theme}) => theme.sizes.borrad.medium};
-    padding: ${({theme}) => theme.sizes.padding.sm_dash};
+    padding: ${({theme}) => theme.sizes.padding.small};
 `
 
 export default StyledDash;

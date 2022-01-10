@@ -43,6 +43,12 @@ const StyledWallet = styled.div`
             div:nth-child(5n + 6), div:nth-child(5n + 7) {
                 color: ${({theme}) => theme.colors.light3};
                 font-weight: 300;
+              
+            }
+            &-price, &-balance {
+                @media (max-width: ${props => props.theme.breakpoints.medium}) {
+                    opacity: 0;
+                }
             }
             &-item {
                 &-asset {
@@ -67,12 +73,15 @@ const StyledWallet = styled.div`
                 }
                 &-price, &-balance {
                     font-weight: 300;
-                    
                     color: ${({theme}) => theme.colors.light3};
+                    @media (max-width: ${props => props.theme.breakpoints.medium}) {
+                        opacity: 0;
+                    }
                 }
             }
             
         }
+        
         
         
     }

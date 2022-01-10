@@ -4,10 +4,13 @@ import DashHeader from "./dashboard/main/DashHeader";
 const StyledLoader = styled.div`
     margin: 0 auto;
     background-color: ${({theme}) => theme.colors.dark2};
-    max-width: ${({theme}) => theme.sizes.width.dash1};
+    max-width: ${({theme}) => theme.sizes.width.full_width};
     border: 0.5px solid ${({theme}) => theme.colors.grey2};
     border-radius: ${({theme}) => theme.sizes.borrad.medium};
-    padding: ${({theme}) => theme.sizes.padding.dash};
+    padding: ${({theme}) => theme.sizes.padding.normal};
+    @media (max-width: ${props => props.theme.breakpoints.medium}) {
+        margin: ${({theme}) => theme.sizes.padding.normal};
+    }
 
     .Loader {
         &-animation {

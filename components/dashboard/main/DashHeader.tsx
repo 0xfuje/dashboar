@@ -5,6 +5,7 @@ import { DashboardContext } from "../../../context/dashboard.context";
 
 const StyledDashHeader = styled.div`
     .DashHeader {
+        
         &-address {
             display: inline-block;
             background-color: ${({theme}) => theme.colors.dark1};

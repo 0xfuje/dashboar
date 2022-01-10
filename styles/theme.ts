@@ -25,9 +25,7 @@ declare module 'styled-components' {
                 xlarge: string
             },
             width: {
-                dash1: string,
-                dash2: string,
-                searchbar: string,
+                small_width: string,
                 full_width: string
             },
             icon: {
@@ -40,10 +38,14 @@ declare module 'styled-components' {
                 medium: string
             },
             padding: {
-                sm_dash: string,
-                dash: string
+                xsmall: string,
+                small: string,
+                normal: string
             }
         },
+        breakpoints: {
+            medium: string,
+        }
         
     }
 }
@@ -73,9 +75,7 @@ const theme: DefaultTheme = {
             xlarge: '24px'
         },
         width: {
-            dash1: '780px',
-            dash2: '500px',
-            searchbar: '500px',
+            small_width: '500px',
             full_width: '780px',
         },
         icon: {
@@ -88,9 +88,13 @@ const theme: DefaultTheme = {
             medium: '5px'
         },
         padding: {
-            sm_dash: '20px',
-            dash: '50px'
+            xsmall: '10px',
+            small: '20px',
+            normal: '50px'
         }
+    },
+    breakpoints: {
+        medium: '780px'
     }
     
     

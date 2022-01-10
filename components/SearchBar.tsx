@@ -30,7 +30,7 @@ const StyledSearchBar = styled.div`
             }
             @media (max-width: ${props => props.theme.breakpoints.medium}) {
                 
-                width: calc(40vw);
+                width: calc(100px + 40vw);
             }
         }
         &-button {

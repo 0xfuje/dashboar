@@ -12,7 +12,13 @@ body {
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: ${props => props.theme.colors.light1}
+  color: ${props => props.theme.colors.light1};
+  @media (max-width: ${props => props.theme.breakpoints.medium}) {
+      font-size: 13px;
+  }
+  @media (max-width: ${props => props.theme.breakpoints.small}) {
+      font-size: 12px;
+  }
 }
 
 h1, h2, h3, h4, h5 {

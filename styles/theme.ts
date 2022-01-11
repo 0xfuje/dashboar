@@ -44,6 +44,7 @@ declare module 'styled-components' {
             }
         },
         breakpoints: {
+            small: string,
             medium: string,
         }
         
@@ -94,6 +95,7 @@ const theme: DefaultTheme = {
         }
     },
     breakpoints: {
+        small: '600px',
         medium: '780px'
     }
     

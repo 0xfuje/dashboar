@@ -35,10 +35,9 @@ function Footer() {
     const year = new Date().getFullYear();
     return (
         <StyledFooter className="Footer">
-            <p className="Footer-para">©{year} Designed and coded by <a className='Footer-link' href="https://github.com/web3wolf">web3wolf</a>.
+            <p className="Footer-para">©{year} Designed and coded by <a className='Footer-link' href="https://github.com/0xfuje">0xfuje</a>.
             Works best on desktop viewport.
-            Built with DeBank OpenAPI, React, Next.js and Styled components.
-            I&#39;m a front-end dev looking for work and freelancing in crypto!</p>
+            </p>
         </StyledFooter>
     )
 }

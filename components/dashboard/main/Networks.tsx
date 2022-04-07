@@ -42,7 +42,7 @@ function Networks() {
     
     return (
         <StyledNetworks className='Networks'>
-            <h2 className="Networks-title">Networks</h2>
+            <h2 className="Networks-title">{wallet.chains.length > 0 ? 'Networks' : ''}</h2>
             <div className="Networks-grid">
                 {renderCards}
             </div>

@@ -89,10 +89,8 @@ const StyledWallet = styled.div`
 
 function Wallet() {
     const { wallet, loading } = useContext(DashboardContext);
-    console.log(wallet.assets);
     
-    
-    const renderWallet = loading ? '' : 
+    const renderWalletBody = loading ? '' : 
     wallet.assets.map((item: any) => {
         if (item.value < 1) return;
         return (
@@ -111,20 +109,24 @@ function Wallet() {
             </>
         )
     });
+    const renderWallet = 
+    <StyledWallet className="Wallet">
+        <h2 className='Wallet-title'>Wallet</h2>
+        <StyledDash> 
+            <div className="Wallet-grid">
+                <div className="Wallet-grid-empty"></div>
+                <div className="Wallet-grid-asset">asset</div>
+                <div className="Wallet-grid-price">price</div>
+                <div className="Wallet-grid-balance">balance</div>
+                <div className="Wallet-grid-value">value</div>
+                {renderWalletBody}
+            </div>
+        </StyledDash>
+    </StyledWallet>
     return (
-        <StyledWallet className="Wallet">
-            <h2 className='Wallet-title'>Wallet</h2>
-            <StyledDash> 
-                <div className="Wallet-grid">
-                    <div className="Wallet-grid-empty"></div>
-                    <div className="Wallet-grid-asset">asset</div>
-                    <div className="Wallet-grid-price">price</div>
-                    <div className="Wallet-grid-balance">balance</div>
-                    <div className="Wallet-grid-value">value</div>
-                    {renderWallet}
-                </div>
-            </StyledDash>
-        </StyledWallet>
+        <>
+        {wallet.assets.length > 0 ? renderWallet : ''}
+        </>
     )
 }
 

@@ -45,7 +45,7 @@ function Protocols() {
     
     return (
         <StyledProtocols className="Protocols">
-            <h2 className='Protocols-title'>Protocols</h2>
+            <h2 className='Protocols-title'>{wallet.protocols.length > 0 ? 'Protocols' : ''}</h2>
             <div className="Protocols-grid">
                 {renderProtocols}
             </div>

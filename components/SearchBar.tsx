@@ -66,7 +66,6 @@ function SearchBar() {
         resolution
             .addr(domain, currency)
             .then((udAddress: string) => {
-                console.log(domain, 'resolves to', udAddress)
                 setDomainName(domain)
                 setAddressID(udAddress)
             })

@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import SearchBar from './SearchBar';
 import Image from 'next/image';
-
-
+import { useContext, useState } from 'react';
+import { DashboardContext } from '../context/dashboard.context';
+import UAuth from '@uauth/js'
 
 const StyledHeader = styled.header`
     margin: 40px auto;
@@ -29,9 +30,9 @@ const StyledHeader = styled.header`
             }
         }
         &-connectButton {
-            background-color: ${props => props.theme.colors.grey2};
+            background-color: #4C47F7;
             color: ${props => props.theme.colors.light1};
-            padding: 0 20px;
+            padding: 0 25px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -39,7 +40,7 @@ const StyledHeader = styled.header`
             border: none;
             cursor: pointer;
             &:hover {
-                background-color: ${props => props.theme.colors.grey1};
+                background-color: #3e38f0;
             }
         }
     }
@@ -48,6 +49,32 @@ const StyledHeader = styled.header`
 
 
 function Header() {
+    const { setAddressID, setDomainName, walletDispatch } = useContext(DashboardContext);
+
+    const uauth = new UAuth({
+        clientID: '40999ed6-536a-4c85-9196-ab85695ed33c',
+        redirectUri: 'http://localhost:3000',
+    })
+
+    const authUD = async () => {
+        try {
+            const authorization = await uauth.loginWithPopup()
+            console.log(authorization)
+            return authorization.idToken
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    const loginUD = () => {
+        authUD()
+            .then((idToken) => {
+                setAddressID(idToken?.wallet_address)
+                setDomainName(idToken?.sub)
+            });
+        walletDispatch({ type: 'API-REQUEST' })
+    }
+
     return (
         <StyledHeader className='Header'>
                 <div className="Header-logo">
@@ -60,7 +87,9 @@ function Header() {
                 
                 
                 <SearchBar />
-                <button className='Header-connectButton'>Connect a wallet</button>
+                <button className='Header-connectButton' onClick={loginUD}>
+                    Login with<br/>Unstoppable
+                </button>
         </StyledHeader>
     )
 }

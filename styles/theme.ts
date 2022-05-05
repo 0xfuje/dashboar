@@ -76,7 +76,7 @@ const theme: DefaultTheme = {
             xlarge: '24px'
         },
         width: {
-            small_width: '500px',
+            small_width: '400px',
             full_width: '780px',
         },
         icon: {

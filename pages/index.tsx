@@ -9,7 +9,7 @@ import { useContext } from 'react';
 
 
 
-const Home: NextPage = () => {
+const HomePage: NextPage = () => {
   const {wallet} = useContext(DashboardContext);
   return (
     <>
@@ -22,4 +22,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default HomePage

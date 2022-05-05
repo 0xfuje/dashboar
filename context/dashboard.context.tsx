@@ -23,6 +23,7 @@ export const DashboardContext = createContext<any | null>(null);
 export function DashboardProvider(props: any) {
     const [wallet, walletDispatch] = useReducer(walletReducer, defWallet);
     const [addressID, setAddressID] = useState('');
+    const [domainName, setDomainName] = useState('');
 
     // Api calls
     const APIRequests = {
@@ -43,7 +44,6 @@ export function DashboardProvider(props: any) {
             const B = b.amount * b.price;
             return B - A;
         });
-        console.log(sortAssets);
         const finalAssets = sortAssets.map((item: any) => {
             const value = item.amount * item.price;
             const price = getDecimals(item.price);
@@ -102,7 +102,7 @@ export function DashboardProvider(props: any) {
 
 
     return (
-        <DashboardContext.Provider value={{wallet, walletDispatch, addressID, setAddressID}}>
+        <DashboardContext.Provider value={{wallet, walletDispatch, addressID, setAddressID, domainName, setDomainName}}>
             {props.children}
         </DashboardContext.Provider>
     )

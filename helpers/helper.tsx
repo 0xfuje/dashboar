@@ -1,5 +1,7 @@
+import Resolution from '@unstoppabledomains/resolution'
+
 export const getDecimals = (num: number) => {
-    // very ugly i know, later will fix
+    // very ugly and bad practice i know, later will fix
     if (num > 1000) return num.toFixed(1);
     if (num > 100) return num.toFixed(2);
     if (num > 10) return num.toFixed(3);
@@ -13,3 +15,4 @@ export const getDecimals = (num: number) => {
     if (num < 0.000001) return num.toFixed(10);
     if (num < 0.0000001) return num.toFixed(11);
 }
+

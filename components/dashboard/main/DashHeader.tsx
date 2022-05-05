@@ -29,8 +29,8 @@ const StyledDashHeader = styled.div`
 `
 
 function DashHeader() {
-    const { wallet, addressID } = useContext(DashboardContext);
-    const shortAddressID = `${addressID.slice(0, 6)}...${addressID.slice(-4)}`;
+    const { wallet, addressID, domainName } = useContext(DashboardContext);
+    const shortAddressID = (domainName) ? domainName : `${addressID.slice(0, 6)}...${addressID.slice(-4)}`
     const displayTotal = (wallet.total > 0) ? `$${wallet.total}` : '???' ;
     return (
         <StyledDashHeader className="DashHeader">

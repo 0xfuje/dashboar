@@ -3,6 +3,7 @@ import SearchBar from './SearchBar';
 import Image from 'next/image';
 
 
+
 const StyledHeader = styled.header`
     margin: 40px auto;
     display: flex;
@@ -27,14 +28,26 @@ const StyledHeader = styled.header`
                 top: 0;
             }
         }
+        &-connectButton {
+            background-color: ${props => props.theme.colors.grey2};
+            color: ${props => props.theme.colors.light1};
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3px;
+            border: none;
+            cursor: pointer;
+            &:hover {
+                background-color: ${props => props.theme.colors.grey1};
+            }
+        }
     }
 `
 
 
 
 function Header() {
-    
-
     return (
         <StyledHeader className='Header'>
                 <div className="Header-logo">
@@ -47,6 +60,7 @@ function Header() {
                 
                 
                 <SearchBar />
+                <button className='Header-connectButton'>Connect a wallet</button>
         </StyledHeader>
     )
 }

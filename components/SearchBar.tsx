@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import { useContext, useState } from 'react';
 import { DashboardContext } from '../context/dashboard.context';
+import { Resolution } from "@unstoppabledomains/resolution";
 
 const StyledSearchBar = styled.div`
     background-color: ${props => props.theme.colors.dark2};
@@ -56,12 +57,32 @@ const StyledSearchBar = styled.div`
 
 
 function SearchBar() {
-    const { setAddressID, walletDispatch } = useContext(DashboardContext);
+    const { setAddressID, setDomainName, walletDispatch } = useContext(DashboardContext);
     const [address, setAddress] = useState('');
-    const setAddressHandler = () => {
-        setAddressID(address);
-        walletDispatch({ type: 'API-REQUEST'})
+
+    const resolution = new Resolution();
+
+    const resolveUD = (domain: string, currency: string = 'ETH') => {
+        resolution
+            .addr(domain, currency)
+            .then((udAddress: string) => {
+                console.log(domain, 'resolves to', udAddress)
+                setDomainName(domain)
+                setAddressID(udAddress)
+            })
+            .catch((error) => console.error(error))
     }
+
+    const setAddressHandler = () => {
+        if (address.length === 42) setAddressID(address);
+        if (
+            address.includes('.crypto') || address.includes('.nft') || address.includes('.x') || address.includes('.wallet') || address.includes('.zil') ||
+            address.includes('.bitcoin') || address.includes('.dao') || address.includes('.888') || address.includes('.coin')
+        ) {
+            resolveUD(address, 'ETH')
+        }
+        walletDispatch({ type: 'API-REQUEST'})
+    } 
     return (
         <StyledSearchBar className="SearchBar">
             <input className="SearchBar-input" type="text" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Enter an address to get started..." />

@@ -53,7 +53,7 @@ function Header() {
 
     const uauth = new UAuth({
         clientID: '40999ed6-536a-4c85-9196-ab85695ed33c',
-        redirectUri: 'http://localhost:3000',
+        redirectUri: 'https://dashboar.netlify.app/',
     })
 
     const authUD = async () => {

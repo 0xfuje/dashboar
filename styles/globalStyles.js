@@ -41,6 +41,9 @@ body {
     background-color: ${props => props.theme.colors.dark2};
     margin: 0 auto;
 }
+.css-us6vhb {
+  color: #000;
+}
 `
 
 export default GlobalStyles;
